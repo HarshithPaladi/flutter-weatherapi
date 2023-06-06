@@ -12,7 +12,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        
+      - name: Set API_KEY in .env
+        run: echo "API_KEY=${{ secrets.API_KEY }}" > ${{ github.workspace }}/.env
 
+#       - name: Display .env contents
+#         run: cat ${{ github.workspace }}/.env
+        
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
