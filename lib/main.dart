@@ -1,15 +1,62 @@
 import 'dart:convert';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'login.dart';
 
-Future main() async {
-  await dotenv.load(fileName: ".env");
-  runApp(Weather());
+Future<UserCredential> signInWithGoogle() async {
+  // Trigger the authentication flow
+  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+  // Obtain the auth details from the request
+  final GoogleSignInAuthentication? googleAuth =
+      await googleUser?.authentication;
+
+  // Create a new credential
+  final credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth?.accessToken,
+    idToken: googleAuth?.idToken,
+  );
+
+  // Once signed in, return the UserCredential
+  return await FirebaseAuth.instance.signInWithCredential(credential);
 }
 
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await dotenv.load(fileName: ".env");
+  runApp(test_route());
+}
+
+class test_route extends StatefulWidget {
+  const test_route({super.key});
+
+  @override
+  State<test_route> createState() => _test_routeState();
+}
+
+class _test_routeState extends State<test_route> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: '/',
+
+      routes: {
+        '/': (context) => FirebaseAuth.instance.currentUser == null ? LoginPage() : Weather(),
+        '/homepage': (context) => Weather(),
+      },
+    );
+  }
+}
 class Weather extends StatefulWidget {
   const Weather({Key? key}) : super(key: key);
 

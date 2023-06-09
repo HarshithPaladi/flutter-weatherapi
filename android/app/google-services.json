@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "514103970987",
+    "project_id": "flutter-weatherapp-06",
+    "storage_bucket": "flutter-weatherapp-06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514103970987:android:380a3e409328718f703bee",
+        "android_client_info": {
+          "package_name": "com.example.weatherapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514103970987-4aec3fturjo29r289mj49p92ug6nnrpt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.weatherapi",
+            "certificate_hash": "f140376afc446141797cd84af045de1a2c2fb0c4"
+          }
+        },
+        {
+          "client_id": "514103970987-a6ivn9a3lj29tm983d5f54j3hmpdop1m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQkw6vC8phXPQ5TbhN3bdQjEcPeGUDbrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514103970987-78tfu2v43pqbq58jkgalqbeukfk9uav1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "514103970987-lfiugiklfquas1ph2arnu3m6m6gss9jl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.weatherapi.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
